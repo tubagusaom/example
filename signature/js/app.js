@@ -2,12 +2,14 @@
 
 const wrapper = document.getElementById("signature-pad");
 
-const clearButton = wrapper.querySelector("[data-action=clear]");
-const changeColorButton = wrapper.querySelector("[data-action=change-color]");
-const undoButton = wrapper.querySelector("[data-action=undo]");
+
 
 const lockButton = wrapper.querySelector("[data-action=lock]");
 const unlockButton = wrapper.querySelector("[data-action=unlock]");
+
+const clearButton = wrapper.querySelector("[data-action=clear]");
+const undoButton = wrapper.querySelector("[data-action=undo]");
+// const changeColorButton = wrapper.querySelector("[data-action=change-color]");
 
 const savePNGButton = wrapper.querySelector("[data-action=save-png]");
 const saveJPGButton = wrapper.querySelector("[data-action=save-jpg]");
@@ -95,16 +97,13 @@ undoButton.addEventListener("click", () => {
   }
 });
 
+
+
 const idLock = document.getElementById("lock");
-idLock .addEventListener("click", () => {
+idLock.addEventListener("click", () => {
 
   var dataAction = idLock.getAttribute("data-action");
   var sig = signaturePadbody.getAttribute("class");
-
-  // var canvas = document.getElementById('myCanvas');
-  // var context = canvas.getContext('2d');
-
-  // context.clearRect(0, 0, canvas.width, canvas.height);
 
   if (dataAction === "lock") {
 
@@ -115,6 +114,9 @@ idLock .addEventListener("click", () => {
 
     signaturePadbody.classList.add(sig + "-lock");
 
+    clearButton.setAttribute("disabled", "");
+    undoButton.setAttribute("disabled", "");
+
   }else {
 
     signaturePad.on();
@@ -124,6 +126,9 @@ idLock .addEventListener("click", () => {
 
     signaturePadbody.removeAttribute("class");
     signaturePadbody.setAttribute("class", 'signature-pad--body');
+
+    clearButton.removeAttribute("disabled");
+    undoButton.removeAttribute("disabled");
 
   }
 
