@@ -232,8 +232,21 @@
                 ? throttle(SignaturePad.prototype._strokeUpdate, this.throttle)
                 : SignaturePad.prototype._strokeUpdate;
             this._ctx = canvas.getContext('2d');
-            this.clear();
+            // this.clear();
             this.on();
+        }
+
+        clear_on() {
+            const { _ctx: ctx, canvas } = this;
+            ctx.fillStyle = this.backgroundColor;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            this._data = [];
+            this._reset();
+            this._isEmpty = true;
+
+            // alert(canvas.height);
         }
         clear() {
             const { _ctx: ctx, canvas } = this;
@@ -244,6 +257,7 @@
             this._reset();
             this._isEmpty = true;
         }
+
         fromDataURL(dataUrl, options = {}) {
             return new Promise((resolve, reject) => {
                 const image = new Image();
@@ -400,8 +414,10 @@
         _reset() {
             this._lastPoints = [];
             this._lastVelocity = 0;
-            this._lastWidth = (this.minWidth + this.maxWidth) / 2;
+            var abc = this._lastWidth = (this.minWidth + this.maxWidth);
             this._ctx.fillStyle = this.penColor;
+
+            // alert(abc);
         }
         _createPoint(x, y, pressure) {
             const rect = this.canvas.getBoundingClientRect();

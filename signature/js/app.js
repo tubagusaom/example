@@ -32,19 +32,25 @@ function resizeCanvas() {
   // When zoomed out to less than 100%, for some very strange reason,
   // some browsers report devicePixelRatio as less than 1
   // and only part of the canvas is cleared then.
-  const ratio =  Math.max(window.devicePixelRatio || 1, 1);
+  const ratio =  Math.max(window.devicePixelRatio || 2, 2);
 
   // This part causes the canvas to be cleared
-  canvas.width = canvas.offsetWidth * ratio;
-  canvas.height = canvas.offsetHeight * ratio;
-  canvas.getContext("2d").scale(ratio, ratio);
+  // canvas.width = canvas.offsetWidth * ratio;
+  // canvas.height = canvas.offsetHeight * ratio;
+  // canvas.getContext("2d").scale(ratio, ratio);
+
+  var xxx = canvas.width = canvas.offsetWidth * ratio;
+  var yyy = canvas.height = canvas.offsetHeight * ratio;
+  var zzz = canvas.getContext("2d").scale(ratio, ratio);
+
+  // alert(canvas.offsetHeight * ratio);
 
   // This library does not listen for canvas changes, so after the canvas is automatically
   // cleared by the browser, SignaturePad#isEmpty might still return false, even though the
   // canvas looks empty, because the internal data of this library wasn't cleared. To make sure
   // that the state of this library is consistent with visual state of the canvas, you
   // have to clear it manually.
-  signaturePad.clear();
+  signaturePad.clear_on();
 }
 
 // On mobile devices it might make more sense to listen to orientation change,

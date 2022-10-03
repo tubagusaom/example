@@ -28,12 +28,20 @@
   </script>
 </head>
 
-<body onselectstart="return false">
+<body>
   <!-- <a id="github" style="position: absolute; top: 0; right: 0; border: 0" href="https://github.com/szimek/signature_pad">
     <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
   </a> -->
 
+  <div class="div-header">
+    <div class="">
+      xxx
+    </div>
+  </div>
+
   <div id="signature-pad" class="signature-pad">
+
+
 
     <div id="signature-pad--body" class="signature-pad--body">
       <canvas id="myCanvas"></canvas>
