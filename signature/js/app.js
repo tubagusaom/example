@@ -35,13 +35,9 @@ function resizeCanvas() {
   const ratio =  Math.max(window.devicePixelRatio || 2, 2);
 
   // This part causes the canvas to be cleared
-  // canvas.width = canvas.offsetWidth * ratio;
-  // canvas.height = canvas.offsetHeight * ratio;
-  // canvas.getContext("2d").scale(ratio, ratio);
-
-  var xxx = canvas.width = canvas.offsetWidth * ratio;
-  var yyy = canvas.height = canvas.offsetHeight * ratio;
-  var zzz = canvas.getContext("2d").scale(ratio, ratio);
+  canvas.width = canvas.offsetWidth * ratio;
+  canvas.height = canvas.offsetHeight * ratio;
+  canvas.getContext("2d").scale(ratio, ratio);
 
   // alert(canvas.offsetHeight * ratio);
 
